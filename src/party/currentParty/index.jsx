@@ -4,7 +4,7 @@ import Pokemon from './pokemon';
 
 function Party(props) {
   return (
-    <div >
+    <div className="party">
       <Pokemon pokemon={props.party} />
     </div>
   );

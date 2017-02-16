@@ -1,7 +1,8 @@
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
 import React, { Component } from 'react';
-import { Image } from 'react-bootstrap';
+import { Image, Col, Row, Grid } from 'react-bootstrap';
 import Party from './party';
-import './App.css';
 import Filters from './filter';
 
 class App extends Component {
@@ -31,8 +32,13 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png" responsive />
+      <Grid>
+        <Row>
+          <Col xs={12} lg={12} >
+            <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png" responsive />
+          </Col>
+        </Row>
+        <h1 className='text-centered'>Party Stats</h1>
         <Party headings={['earth', 'wind']} pokemon={pokemon} types={this.state.types} />
         <Filters
           addTypeFilter={this.addTypeFilter}
@@ -40,9 +46,9 @@ class App extends Component {
           addNameFilter={this.addNameFilter}
           pokemon={pokemon}
           types={this.state.types}
-          moves={this.state.moves} 
+          moves={this.state.moves}
         />
-      </div>
+      </Grid>
     );
   }
 }
@@ -51,12 +57,12 @@ export default App;
 
 var pokemon = [
   {
-    '_id': '583dd0005e1c0d4be5367b7c',
+    _id: '583dd0005e1c0d4be5367b7c',
     name: 'bulbasaur',
     order: 1,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-    '__v': 0,
-    'abilities': [
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
+    __v: 0,
+    abilities: [
       'chlorophyll',
       'overgrow',
     ],
@@ -90,7 +96,7 @@ var pokemon = [
         45,
       ],
     ],
-    'moves': [
+    moves: [
       'razor-wind',
       'swords-dance',
       'cut',
@@ -171,20 +177,20 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367b7e',
+    _id: '583dd0005e1c0d4be5367b7e',
     name: 'ivysaur',
     order: 2,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png',
-    '__v': 0,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png',
+    __v: 0,
     abilities: [
       'chlorophyll',
       'overgrow',
     ],
-    'types': [
+    types: [
       'poison',
       'grass',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         60,
@@ -210,7 +216,7 @@ var pokemon = [
         60,
       ],
     ],
-    'moves': [
+    moves: [
       'swords-dance',
       'cut',
       'bind',
@@ -279,21 +285,21 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367b7d',
-    'name': 'pidgey',
-    'order': 21,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png',
-    '__v': 0,
-    'abilities': [
+    _id: '583dd0005e1c0d4be5367b7d',
+    name: 'pidgey',
+    order: 21,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png',
+    __v: 0,
+    abilities: [
       'big-pecks',
       'tangled-feet',
       'keen-eye',
     ],
-    'types': [
+    types: [
       'flying',
       'normal',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         56,
@@ -387,19 +393,19 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367b80',
-    'name': 'venusaur',
-    'order': 3,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png',
-    '__v': 0,
+    name: 'venusaur',
+    order: 3,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png',
+    __v: 0,
     abilities: [
       'chlorophyll',
       'overgrow',
     ],
-    'types': [
+    types: [
       'poison',
       'grass',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         80,
@@ -425,7 +431,7 @@ var pokemon = [
         80,
       ],
     ],
-    'moves': [
+    moves: [
       'swords-dance',
       'cut',
       'bind',
@@ -507,9 +513,9 @@ var pokemon = [
   {
     _id: '583dd0005e1c0d4be5367b7f',
     name: 'charmeleon',
-    'order': 6,
+    order: 6,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png',
-    '__v': 0,
+    __v: 0,
     abilities: [
       'solar-power',
       'blaze',
@@ -631,7 +637,7 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367b81',
-    'name': 'charmander',
+    name: 'charmander',
     order: 5,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png',
     __v: 0,
@@ -642,7 +648,7 @@ var pokemon = [
     types: [
       'fire',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         65,
@@ -668,7 +674,7 @@ var pokemon = [
         39,
       ],
     ],
-    'moves': [
+    moves: [
       'mega-punch',
       'fire-punch',
       'thunder-punch',
@@ -765,18 +771,18 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367b83',
-    'name': 'squirtle',
-    'order': 10,
+    name: 'squirtle',
+    order: 10,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'rain-dish',
       'torrent',
     ],
     types: [
       'water',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         43,
@@ -802,7 +808,7 @@ var pokemon = [
         44,
       ],
     ],
-    'moves': [
+    moves: [
       'mega-punch',
       'ice-punch',
       'mega-kick',
@@ -896,16 +902,16 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367b84',
+    _id: '583dd0005e1c0d4be5367b84',
     name: 'wartortle',
-    'order': 11,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png',
+    order: 11,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'rain-dish',
       'torrent',
     ],
-    'types': [
+    types: [
       'water',
     ],
     stats: [
@@ -1013,20 +1019,20 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367b82',
+    _id: '583dd0005e1c0d4be5367b82',
     name: 'charizard',
-    'order': 7,
+    order: 7,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png',
-    '__v': 0,
-    'abilities': [
+    __v: 0,
+    abilities: [
       'solar-power',
       'blaze',
     ],
-    'types': [
+    types: [
       'flying',
       'fire',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         100,
@@ -1052,7 +1058,7 @@ var pokemon = [
         78,
       ],
     ],
-    'moves': [
+    moves: [
       'mega-punch',
       'fire-punch',
       'thunder-punch',
@@ -1163,14 +1169,14 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367b87',
-    'name': 'kakuna',
+    name: 'kakuna',
     order: 18,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/14.png',
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/14.png',
     __v: 0,
     abilities: [
       'shed-skin',
     ],
-    'types': [
+    types: [
       'poison',
       'bug',
     ],
@@ -1210,7 +1216,7 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367b86',
-    'name': 'blastoise',
+    name: 'blastoise',
     order: 12,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png',
     __v: 0,
@@ -1343,19 +1349,19 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367b85',
-    'name': 'caterpie',
-    'order': 14,
+    _id: '583dd0005e1c0d4be5367b85',
+    name: 'caterpie',
+    order: 14,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'run-away',
       'shield-dust',
     ],
-    'types': [
+    types: [
       'bug',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         45,
@@ -1392,7 +1398,7 @@ var pokemon = [
   {
     _id: '583dd0005e1c0d4be5367b8a',
     name: 'raticate',
-    'order': 26,
+    order: 26,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/20.png',
     __v: 0,
     abilities: [
@@ -1429,7 +1435,7 @@ var pokemon = [
         55,
       ],
     ],
-    'moves': [
+    moves: [
       'swords-dance',
       'cut',
       'headbutt',
@@ -1512,7 +1518,7 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367b8d',
+    _id: '583dd0005e1c0d4be5367b8d',
     name: 'nidoran-f',
     order: 42,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/29.png',
@@ -1522,7 +1528,7 @@ var pokemon = [
       'rivalry',
       'poison-point',
     ],
-    'types': [
+    types: [
       'poison',
     ],
     stats: [
@@ -1551,7 +1557,7 @@ var pokemon = [
         55,
       ],
     ],
-    'moves': [
+    moves: [
       'scratch',
       'cut',
       'double-kick',
@@ -1633,15 +1639,15 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367b88',
-    'name': 'butterfree',
+    name: 'butterfree',
     order: 16,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png',
-    '__v': 0,
-    'abilities': [
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png',
+    __v: 0,
+    abilities: [
       'tinted-lens',
       'compound-eyes',
     ],
-    'types': [
+    types: [
       'flying',
       'bug',
     ],
@@ -1751,12 +1757,12 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367b89',
+    _id: '583dd0005e1c0d4be5367b89',
     name: 'pidgeot',
-    'order': 23,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/18.png',
-    '__v': 0,
-    'abilities': [
+    order: 23,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/18.png',
+    __v: 0,
+    abilities: [
       'big-pecks',
       'tangled-feet',
       'keen-eye',
@@ -1857,10 +1863,10 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367b90',
-    'name': 'sandslash',
+    name: 'sandslash',
     order: 41,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/28.png',
-    '__v': 0,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/28.png',
+    __v: 0,
     abilities: [
       'sand-rush',
       'sand-veil',
@@ -1894,7 +1900,7 @@ var pokemon = [
         75,
       ],
     ],
-    'moves': [
+    moves: [
       'scratch',
       'swords-dance',
       'cut',
@@ -1979,11 +1985,11 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367b8b',
+    _id: '583dd0005e1c0d4be5367b8b',
     name: 'weedle',
     order: 17,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png',
-    '__v': 0,
+    __v: 0,
     abilities: [
       'run-away',
       'shield-dust',
@@ -2026,16 +2032,16 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367b8c',
-    'name': 'pikachu',
-    'order': 32,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
-    '__v': 0,
-    'abilities': [
+    _id: '583dd0005e1c0d4be5367b8c',
+    name: 'pikachu',
+    order: 32,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
+    __v: 0,
+    abilities: [
       'lightning-rod',
       'static',
     ],
-    'types': [
+    types: [
       'electric',
     ],
     stats: [
@@ -2151,15 +2157,15 @@ var pokemon = [
   {
     _id: '583dd0005e1c0d4be5367b93',
     name: 'nidoran-m',
-    'order': 45,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/32.png',
+    order: 45,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/32.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'hustle',
       'rivalry',
       'poison-point',
     ],
-    'types': [
+    types: [
       'poison',
     ],
     stats: [
@@ -2188,7 +2194,7 @@ var pokemon = [
         46,
       ],
     ],
-    'moves': [
+    moves: [
       'cut',
       'double-kick',
       'headbutt',
@@ -2269,11 +2275,11 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367b8e',
+    _id: '583dd0005e1c0d4be5367b8e',
     name: 'raichu',
-    'order': 39,
+    order: 39,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png',
-    '__v': 0,
+    __v: 0,
     abilities: [
       'lightning-rod',
       'static',
@@ -2281,7 +2287,7 @@ var pokemon = [
     types: [
       'electric',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         110,
@@ -2388,19 +2394,19 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367b96',
-    'name': 'spearow',
+    name: 'spearow',
     order: 27,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/21.png',
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/21.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'sniper',
       'keen-eye',
     ],
-    'types': [
+    types: [
       'flying',
       'normal',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         70,
@@ -2499,7 +2505,7 @@ var pokemon = [
     _id: '583dd0005e1c0d4be5367b8f',
     name: 'beedrill',
     order: 19,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png',
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png',
     __v: 0,
     abilities: [
       'sniper',
@@ -2509,7 +2515,7 @@ var pokemon = [
       'poison',
       'bug',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         75,
@@ -2535,7 +2541,7 @@ var pokemon = [
         65,
       ],
     ],
-    'moves': [
+    moves: [
       'swords-dance',
       'cut',
       'fury-attack',
@@ -2613,20 +2619,20 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367b91',
-    'name': 'nidorino',
-    'order': 46,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/33.png',
+    _id: '583dd0005e1c0d4be5367b91',
+    name: 'nidorino',
+    order: 46,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/33.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'hustle',
       'rivalry',
       'poison-point',
     ],
-    'types': [
+    types: [
       'poison',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         65,
@@ -2652,7 +2658,7 @@ var pokemon = [
         61,
       ],
     ],
-    'moves': [
+    moves: [
       'cut',
       'double-kick',
       'headbutt',
@@ -2726,20 +2732,20 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367b92',
+    _id: '583dd0005e1c0d4be5367b92',
     name: 'zubat',
     order: 56,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/41.png',
-    '__v': 0,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/41.png',
+    __v: 0,
     abilities: [
       'infiltrator',
       'inner-focus',
     ],
-    'types': [
+    types: [
       'flying',
       'poison',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         55,
@@ -2845,17 +2851,17 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367b99',
-    'name': 'clefable',
-    'order': 50,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/36.png',
-    '__v': 0,
+    _id: '583dd0005e1c0d4be5367b99',
+    name: 'clefable',
+    order: 50,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/36.png',
+    __v: 0,
     abilities: [
       'unaware',
       'magic-guard',
       'cute-charm',
     ],
-    'types': [
+    types: [
       'fairy',
     ],
     stats: [
@@ -2884,7 +2890,7 @@ var pokemon = [
         95,
       ],
     ],
-    'moves': [
+    moves: [
       'double-slap',
       'mega-punch',
       'fire-punch',
@@ -3005,11 +3011,11 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367b95',
-    'name': 'nidorina',
-    'order': 43,
+    _id: '583dd0005e1c0d4be5367b95',
+    name: 'nidorina',
+    order: 43,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/30.png',
-    '__v': 0,
+    __v: 0,
     abilities: [
       'hustle',
       'rivalry',
@@ -3120,20 +3126,20 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367b94',
-    'name': 'nidoking',
-    'order': 47,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/34.png',
-    '__v': 0,
+    name: 'nidoking',
+    order: 47,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/34.png',
+    __v: 0,
     abilities: [
       'sheer-force',
       'rivalry',
       'poison-point',
     ],
-    'types': [
+    types: [
       'ground',
       'poison',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         85,
@@ -3282,9 +3288,9 @@ var pokemon = [
     _id: '583dd0005e1c0d4be5367b97',
     name: 'clefairy',
     order: 49,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png',
-    '__v': 0,
-    'abilities': [
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png',
+    __v: 0,
+    abilities: [
       'friend-guard',
       'magic-guard',
       'cute-charm',
@@ -3292,7 +3298,7 @@ var pokemon = [
     types: [
       'fairy',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         35,
@@ -3448,19 +3454,19 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367b98',
-    'name': 'vulpix',
-    'order': 51,
+    _id: '583dd0005e1c0d4be5367b98',
+    name: 'vulpix',
+    order: 51,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/37.png',
-    '__v': 0,
-    'abilities': [
+    __v: 0,
+    abilities: [
       'drought',
       'flash-fire',
     ],
     types: [
       'fire',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         65,
@@ -3486,7 +3492,7 @@ var pokemon = [
         38,
       ],
     ],
-    'moves': [
+    moves: [
       'headbutt',
       'body-slam',
       'take-down',
@@ -3564,9 +3570,9 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367b9c',
-    'name': 'arbok',
-    'order': 30,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/24.png',
+    name: 'arbok',
+    order: 30,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/24.png',
     __v: 0,
     abilities: [
       'unnerve',
@@ -3602,7 +3608,7 @@ var pokemon = [
         60,
       ],
     ],
-    'moves': [
+    moves: [
       'bind',
       'headbutt',
       'body-slam',
@@ -3687,16 +3693,16 @@ var pokemon = [
     _id: '583dd0005e1c0d4be5367b9b',
     name: 'sandshrew',
     order: 40,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png',
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'sand-rush',
       'sand-veil',
     ],
-    'types': [
+    types: [
       'ground',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         40,
@@ -3809,17 +3815,17 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367b9a',
+    _id: '583dd0005e1c0d4be5367b9a',
     name: 'venomoth',
     order: 66,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/49.png',
-    '__v': 0,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/49.png',
+    __v: 0,
     abilities: [
       'wonder-skin',
       'tinted-lens',
       'shield-dust',
     ],
-    'types': [
+    types: [
       'poison',
       'bug',
     ],
@@ -3849,7 +3855,7 @@ var pokemon = [
         70,
       ],
     ],
-    'moves': [
+    moves: [
       'razor-wind',
       'gust',
       'whirlwind',
@@ -3928,20 +3934,20 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367b9d',
-    'name': 'fearow',
+    _id: '583dd0005e1c0d4be5367b9d',
+    name: 'fearow',
     order: 28,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/22.png',
-    '__v': 0,
+    __v: 0,
     abilities: [
       'sniper',
       'keen-eye',
     ],
-    'types': [
+    types: [
       'flying',
       'normal',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         100,
@@ -4035,14 +4041,14 @@ var pokemon = [
   {
     _id: '583dd0005e1c0d4be5367b9f',
     name: 'oddish',
-    'order': 59,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/43.png',
+    order: 59,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/43.png',
     __v: 0,
     abilities: [
       'run-away',
       'chlorophyll',
     ],
-    'types': [
+    types: [
       'poison',
       'grass',
     ],
@@ -4072,7 +4078,7 @@ var pokemon = [
         45,
       ],
     ],
-    'moves': [
+    moves: [
       'swords-dance',
       'cut',
       'take-down',
@@ -4141,19 +4147,19 @@ var pokemon = [
   {
     _id: '583dd0005e1c0d4be5367b9e',
     name: 'nidoqueen',
-    'order': 44,
+    order: 44,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/31.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'sheer-force',
       'rivalry',
       'poison-point',
     ],
-    'types': [
+    types: [
       'ground',
       'poison',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         76,
@@ -4179,7 +4185,7 @@ var pokemon = [
         90,
       ],
     ],
-    'moves': [
+    moves: [
       'mega-punch',
       'pay-day',
       'fire-punch',
@@ -4301,15 +4307,15 @@ var pokemon = [
     order: 61,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/45.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'effect-spore',
       'chlorophyll',
     ],
-    'types': [
+    types: [
       'poison',
       'grass',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         50,
@@ -4403,9 +4409,9 @@ var pokemon = [
     _id: '583dd0005e1c0d4be5367ba1',
     name: 'jigglypuff',
     order: 54,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/39.png',
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/39.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'friend-guard',
       'competitive',
       'cute-charm',
@@ -4440,7 +4446,7 @@ var pokemon = [
         115,
       ],
     ],
-    'moves': [
+    moves: [
       'pound',
       'double-slap',
       'mega-punch',
@@ -4551,12 +4557,12 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367ba3',
-    'name': 'ninetales',
+    _id: '583dd0005e1c0d4be5367ba3',
+    name: 'ninetales',
     order: 52,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/38.png',
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/38.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'drought',
       'flash-fire',
     ],
@@ -4589,7 +4595,7 @@ var pokemon = [
         73,
       ],
     ],
-    'moves': [
+    moves: [
       'headbutt',
       'body-slam',
       'take-down',
@@ -4662,8 +4668,8 @@ var pokemon = [
     _id: '583dd0005e1c0d4be5367ba2',
     name: 'diglett',
     order: 67,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/50.png',
-    '__v': 0,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/50.png',
+    __v: 0,
     abilities: [
       'sand-force',
       'arena-trap',
@@ -4769,15 +4775,15 @@ var pokemon = [
     _id: '583dd0005e1c0d4be5367ba4',
     name: 'metapod',
     order: 15,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png',
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png',
     __v: 0,
     abilities: [
       'shed-skin',
     ],
-    'types': [
+    types: [
       'bug',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         30,
@@ -4812,17 +4818,17 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367ba6',
-    'name': 'parasect',
-    'order': 64,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/47.png',
-    '__v': 0,
+    _id: '583dd0005e1c0d4be5367ba6',
+    name: 'parasect',
+    order: 64,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/47.png',
+    __v: 0,
     abilities: [
       'damp',
       'dry-skin',
       'effect-spore',
     ],
-    'types': [
+    types: [
       'grass',
       'bug',
     ],
@@ -4929,9 +4935,9 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367ba7',
-    'name': 'golbat',
-    'order': 57,
+    _id: '583dd0005e1c0d4be5367ba7',
+    name: 'golbat',
+    order: 57,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/42.png',
     __v: 0,
     abilities: [
@@ -4942,7 +4948,7 @@ var pokemon = [
       'flying',
       'poison',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         90,
@@ -4968,7 +4974,7 @@ var pokemon = [
         75,
       ],
     ],
-    'moves': [
+    moves: [
       'razor-wind',
       'wing-attack',
       'whirlwind',
@@ -5043,17 +5049,17 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367ba9',
-    'name': 'wigglytuff',
+    _id: '583dd0005e1c0d4be5367ba9',
+    name: 'wigglytuff',
     order: 55,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/40.png',
-    '__v': 0,
+    __v: 0,
     abilities: [
       'frisk',
       'competitive',
       'cute-charm',
     ],
-    'types': [
+    types: [
       'fairy',
       'normal',
     ],
@@ -5196,10 +5202,10 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367ba5',
-    'name': 'pidgeotto',
-    'order': 22,
+    name: 'pidgeotto',
+    order: 22,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/17.png',
-    '__v': 0,
+    __v: 0,
     abilities: [
       'big-pecks',
       'tangled-feet',
@@ -5209,7 +5215,7 @@ var pokemon = [
       'flying',
       'normal',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         71,
@@ -5299,11 +5305,11 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367baa',
-    'name': 'paras',
-    'order': 63,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/46.png',
+    name: 'paras',
+    order: 63,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/46.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'damp',
       'dry-skin',
       'effect-spore',
@@ -5312,7 +5318,7 @@ var pokemon = [
       'grass',
       'bug',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         25,
@@ -5423,17 +5429,17 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bad',
+    _id: '583dd0005e1c0d4be5367bad',
     name: 'rattata',
     order: 25,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png',
-    '__v': 0,
-    'abilities': [
+    __v: 0,
+    abilities: [
       'hustle',
       'guts',
       'run-away',
     ],
-    'types': [
+    types: [
       'normal',
     ],
     stats: [
@@ -5546,12 +5552,12 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bac',
+    _id: '583dd0005e1c0d4be5367bac',
     name: 'gloom',
     order: 60,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/44.png',
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/44.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'stench',
       'chlorophyll',
     ],
@@ -5559,7 +5565,7 @@ var pokemon = [
       'poison',
       'grass',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         40,
@@ -5585,7 +5591,7 @@ var pokemon = [
         60,
       ],
     ],
-    'moves': [
+    moves: [
       'swords-dance',
       'cut',
       'take-down',
@@ -5648,17 +5654,17 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367ba8',
+    _id: '583dd0005e1c0d4be5367ba8',
     name: 'ekans',
-    'order': 29,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/23.png',
-    '__v': 0,
+    order: 29,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/23.png',
+    __v: 0,
     abilities: [
       'unnerve',
       'shed-skin',
       'intimidate',
     ],
-    'types': [
+    types: [
       'poison',
     ],
     stats: [
@@ -5775,9 +5781,9 @@ var pokemon = [
     _id: '583dd0005e1c0d4be5367bb0',
     name: 'dugtrio',
     order: 68,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/51.png',
-    '__v': 0,
-    'abilities': [
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/51.png',
+    __v: 0,
+    abilities: [
       'sand-force',
       'arena-trap',
       'sand-veil',
@@ -5785,7 +5791,7 @@ var pokemon = [
     types: [
       'ground',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         120,
@@ -5880,15 +5886,15 @@ var pokemon = [
   {
     _id: '583dd0005e1c0d4be5367baf',
     name: 'growlithe',
-    'order': 75,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/58.png',
-    '__v': 0,
+    order: 75,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/58.png',
+    __v: 0,
     abilities: [
       'justified',
       'flash-fire',
       'intimidate',
     ],
-    'types': [
+    types: [
       'fire',
     ],
     stats: [
@@ -5995,8 +6001,8 @@ var pokemon = [
   {
     _id: '583dd0005e1c0d4be5367bab',
     name: 'venonat',
-    'order': 65,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/48.png',
+    order: 65,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/48.png',
     __v: 0,
     abilities: [
       'run-away',
@@ -6007,7 +6013,7 @@ var pokemon = [
       'poison',
       'bug',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         45,
@@ -6100,16 +6106,16 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367bb3',
-    'name': 'machop',
-    'order': 85,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/66.png',
-    '__v': 0,
+    name: 'machop',
+    order: 85,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/66.png',
+    __v: 0,
     abilities: [
       'steadfast',
       'no-guard',
       'guts',
     ],
-    'types': [
+    types: [
       'fighting',
     ],
     stats: [
@@ -6138,7 +6144,7 @@ var pokemon = [
         70,
       ],
     ],
-    'moves': [
+    moves: [
       'karate-chop',
       'mega-punch',
       'fire-punch',
@@ -6236,12 +6242,12 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bb2',
+    _id: '583dd0005e1c0d4be5367bb2',
     name: 'mankey',
     order: 73,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/56.png',
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/56.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'defiant',
       'anger-point',
       'vital-spirit',
@@ -6397,10 +6403,10 @@ var pokemon = [
       'technician',
       'limber',
     ],
-    'types': [
+    types: [
       'normal',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         115,
@@ -6522,11 +6528,11 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bb6',
+    _id: '583dd0005e1c0d4be5367bb6',
     name: 'meowth',
     order: 69,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/52.png',
-    '__v': 0,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/52.png',
+    __v: 0,
     abilities: [
       'unnerve',
       'technician',
@@ -6535,7 +6541,7 @@ var pokemon = [
     types: [
       'normal',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         90,
@@ -6561,7 +6567,7 @@ var pokemon = [
         40,
       ],
     ],
-    'moves': [
+    moves: [
       'pay-day',
       'scratch',
       'cut',
@@ -6658,10 +6664,10 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bb5',
-    'name': 'abra',
-    'order': 81,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/63.png',
+    _id: '583dd0005e1c0d4be5367bb5',
+    name: 'abra',
+    order: 81,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/63.png',
     __v: 0,
     abilities: [
       'magic-guard',
@@ -6697,7 +6703,7 @@ var pokemon = [
         25,
       ],
     ],
-    'moves': [
+    moves: [
       'mega-punch',
       'fire-punch',
       'ice-punch',
@@ -6793,8 +6799,8 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367bb1',
-    'name': 'golduck',
-    'order': 72,
+    name: 'golduck',
+    order: 72,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/55.png',
     __v: 0,
     abilities: [
@@ -6802,7 +6808,7 @@ var pokemon = [
       'cloud-nine',
       'damp',
     ],
-    'types': [
+    types: [
       'water',
     ],
     stats: [
@@ -6929,20 +6935,20 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bb9',
-    'name': 'psyduck',
+    _id: '583dd0005e1c0d4be5367bb9',
+    name: 'psyduck',
     order: 71,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/54.png',
-    '__v': 0,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/54.png',
+    __v: 0,
     abilities: [
       'swift-swim',
       'cloud-nine',
       'damp',
     ],
-    'types': [
+    types: [
       'water',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         55,
@@ -6968,7 +6974,7 @@ var pokemon = [
         50,
       ],
     ],
-    'moves': [
+    moves: [
       'mega-punch',
       'pay-day',
       'ice-punch',
@@ -7071,11 +7077,11 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bb8',
-    'name': 'kadabra',
+    _id: '583dd0005e1c0d4be5367bb8',
+    name: 'kadabra',
     order: 82,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/64.png',
-    '__v': 0,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/64.png',
+    __v: 0,
     abilities: [
       'magic-guard',
       'inner-focus',
@@ -7084,7 +7090,7 @@ var pokemon = [
     types: [
       'psychic',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         105,
@@ -7110,7 +7116,7 @@ var pokemon = [
         40,
       ],
     ],
-    'moves': [
+    moves: [
       'mega-punch',
       'fire-punch',
       'ice-punch',
@@ -7208,11 +7214,11 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bb4',
+    _id: '583dd0005e1c0d4be5367bb4',
     name: 'poliwhirl',
-    'order': 78,
+    order: 78,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/61.png',
-    '__v': 0,
+    __v: 0,
     abilities: [
       'swift-swim',
       'damp',
@@ -7328,10 +7334,10 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367bbc',
-    'name': 'primeape',
-    'order': 74,
+    name: 'primeape',
+    order: 74,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/57.png',
-    '__v': 0,
+    __v: 0,
     abilities: [
       'defiant',
       'anger-point',
@@ -7366,7 +7372,7 @@ var pokemon = [
         65,
       ],
     ],
-    'moves': [
+    moves: [
       'karate-chop',
       'mega-punch',
       'pay-day',
@@ -7474,10 +7480,10 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367bbb',
-    'name': 'alakazam',
-    'order': 83,
+    name: 'alakazam',
+    order: 83,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/65.png',
-    '__v': 0,
+    __v: 0,
     abilities: [
       'magic-guard',
       'inner-focus',
@@ -7613,21 +7619,21 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bbf',
-    'name': 'slowpoke',
-    'order': 98,
+    _id: '583dd0005e1c0d4be5367bbf',
+    name: 'slowpoke',
+    order: 98,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/79.png',
-    '__v': 0,
-    'abilities': [
+    __v: 0,
+    abilities: [
       'regenerator',
       'own-tempo',
       'oblivious',
     ],
-    'types': [
+    types: [
       'psychic',
       'water',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         15,
@@ -7755,17 +7761,17 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bb7',
+    _id: '583dd0005e1c0d4be5367bb7',
     name: 'arcanine',
-    'order': 76,
+    order: 76,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/59.png',
-    '__v': 0,
+    __v: 0,
     abilities: [
       'justified',
       'flash-fire',
       'intimidate',
     ],
-    'types': [
+    types: [
       'fire',
     ],
     stats: [
@@ -7794,7 +7800,7 @@ var pokemon = [
         90,
       ],
     ],
-    'moves': [
+    moves: [
       'headbutt',
       'body-slam',
       'take-down',
@@ -7869,12 +7875,12 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bbe',
-    'name': 'weepinbell',
+    _id: '583dd0005e1c0d4be5367bbe',
+    name: 'weepinbell',
     order: 89,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/70.png',
-    '__v': 0,
-    'abilities': [
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/70.png',
+    __v: 0,
+    abilities: [
       'gluttony',
       'chlorophyll',
     ],
@@ -7973,11 +7979,11 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367bc2',
-    'name': 'graveler',
-    'order': 94,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/75.png',
-    '__v': 0,
-    'abilities': [
+    name: 'graveler',
+    order: 94,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/75.png',
+    __v: 0,
+    abilities: [
       'sand-veil',
       'sturdy',
       'rock-head',
@@ -8092,20 +8098,20 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bc1',
-    'name': 'rapidash',
+    _id: '583dd0005e1c0d4be5367bc1',
+    name: 'rapidash',
     order: 97,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/78.png',
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/78.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'flame-body',
       'flash-fire',
       'run-away',
     ],
-    'types': [
+    types: [
       'fire',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         105,
@@ -8202,7 +8208,7 @@ var pokemon = [
     name: 'poliwrath',
     order: 79,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/62.png',
-    '__v': 0,
+    __v: 0,
     abilities: [
       'swift-swim',
       'damp',
@@ -8212,7 +8218,7 @@ var pokemon = [
       'fighting',
       'water',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         70,
@@ -8238,7 +8244,7 @@ var pokemon = [
         90,
       ],
     ],
-    'moves': [
+    moves: [
       'double-slap',
       'mega-punch',
       'ice-punch',
@@ -8325,21 +8331,21 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bc5',
+    _id: '583dd0005e1c0d4be5367bc5',
     name: 'golem',
-    'order': 95,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png',
-    '__v': 0,
+    order: 95,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png',
+    __v: 0,
     abilities: [
       'sand-veil',
       'sturdy',
       'rock-head',
     ],
-    'types': [
+    types: [
       'ground',
       'rock',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         45,
@@ -8455,9 +8461,9 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367bc4',
-    'name': 'magnemite',
+    name: 'magnemite',
     order: 102,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/81.png',
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/81.png',
     __v: 0,
     abilities: [
       'analytic',
@@ -8468,7 +8474,7 @@ var pokemon = [
       'steel',
       'electric',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         45,
@@ -8561,19 +8567,19 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367bc8',
-    'name': 'seel',
+    name: 'seel',
     order: 108,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/86.png',
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/86.png',
     __v: 0,
     abilities: [
       'ice-body',
       'hydration',
       'thick-fat',
     ],
-    'types': [
+    types: [
       'water',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         45,
@@ -8674,12 +8680,12 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bbd',
-    'name': 'tentacool',
+    _id: '583dd0005e1c0d4be5367bbd',
+    name: 'tentacool',
     order: 91,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/72.png',
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/72.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'rain-dish',
       'liquid-ooze',
       'clear-body',
@@ -8688,7 +8694,7 @@ var pokemon = [
       'poison',
       'water',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         70,
@@ -8714,7 +8720,7 @@ var pokemon = [
         40,
       ],
     ],
-    'moves': [
+    moves: [
       'swords-dance',
       'cut',
       'bind',
@@ -8798,20 +8804,20 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367bc7',
-    'name': 'doduo',
-    'order': 106,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/84.png',
+    name: 'doduo',
+    order: 106,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/84.png',
     __v: 0,
     abilities: [
       'tangled-feet',
       'early-bird',
       'run-away',
     ],
-    'types': [
+    types: [
       'flying',
       'normal',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         75,
@@ -8904,17 +8910,17 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bcb',
+    _id: '583dd0005e1c0d4be5367bcb',
     name: 'tentacruel',
-    'order': 92,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/73.png',
+    order: 92,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/73.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'rain-dish',
       'liquid-ooze',
       'clear-body',
     ],
-    'types': [
+    types: [
       'poison',
       'water',
     ],
@@ -8944,7 +8950,7 @@ var pokemon = [
         80,
       ],
     ],
-    'moves': [
+    moves: [
       'swords-dance',
       'cut',
       'bind',
@@ -9021,15 +9027,15 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367bca',
-    'name': 'victreebel',
-    'order': 90,
+    name: 'victreebel',
+    order: 90,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/71.png',
     __v: 0,
     abilities: [
       'gluttony',
       'chlorophyll',
     ],
-    'types': [
+    types: [
       'poison',
       'grass',
     ],
@@ -9059,7 +9065,7 @@ var pokemon = [
         80,
       ],
     ],
-    'moves': [
+    moves: [
       'swords-dance',
       'cut',
       'bind',
@@ -9129,11 +9135,11 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bc0',
-    'name': 'slowbro',
+    _id: '583dd0005e1c0d4be5367bc0',
+    name: 'slowbro',
     order: 99,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png',
-    '__v': 0,
+    __v: 0,
     abilities: [
       'regenerator',
       'own-tempo',
@@ -9287,10 +9293,10 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367bce',
-    'name': 'muk',
+    name: 'muk',
     order: 111,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/89.png',
-    '__v': 0,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/89.png',
+    __v: 0,
     abilities: [
       'poison-touch',
       'sticky-hold',
@@ -9409,19 +9415,19 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bcd',
-    'name': 'haunter',
+    _id: '583dd0005e1c0d4be5367bcd',
+    name: 'haunter',
     order: 115,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/93.png',
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/93.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'levitate',
     ],
-    'types': [
+    types: [
       'poison',
       'ghost',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         95,
@@ -9447,7 +9453,7 @@ var pokemon = [
         45,
       ],
     ],
-    'moves': [
+    moves: [
       'fire-punch',
       'ice-punch',
       'thunder-punch',
@@ -9529,11 +9535,11 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bd1',
+    _id: '583dd0005e1c0d4be5367bd1',
     name: 'poliwag',
     order: 77,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/60.png',
-    '__v': 0,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/60.png',
+    __v: 0,
     abilities: [
       'swift-swim',
       'damp',
@@ -9542,7 +9548,7 @@ var pokemon = [
     types: [
       'water',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         90,
@@ -9568,7 +9574,7 @@ var pokemon = [
         40,
       ],
     ],
-    'moves': [
+    moves: [
       'double-slap',
       'headbutt',
       'body-slam',
@@ -9637,12 +9643,12 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bc3',
+    _id: '583dd0005e1c0d4be5367bc3',
     name: 'ponyta',
     order: 96,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/77.png',
-    '__v': 0,
-    'abilities': [
+    __v: 0,
+    abilities: [
       'flame-body',
       'flash-fire',
       'run-away',
@@ -9650,7 +9656,7 @@ var pokemon = [
     types: [
       'fire',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         90,
@@ -9745,15 +9751,15 @@ var pokemon = [
   {
     _id: '583dd0005e1c0d4be5367bd0',
     name: 'dewgong',
-    'order': 109,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/87.png',
+    order: 109,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/87.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'ice-body',
       'hydration',
       'thick-fat',
     ],
-    'types': [
+    types: [
       'ice',
       'water',
     ],
@@ -9783,7 +9789,7 @@ var pokemon = [
         90,
       ],
     ],
-    'moves': [
+    moves: [
       'pay-day',
       'headbutt',
       'horn-drill',
@@ -9852,7 +9858,7 @@ var pokemon = [
   {
     _id: '583dd0005e1c0d4be5367bd4',
     name: 'krabby',
-    'order': 123,
+    order: 123,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/98.png',
     __v: 0,
     abilities: [
@@ -9860,10 +9866,10 @@ var pokemon = [
       'shell-armor',
       'hyper-cutter',
     ],
-    'types': [
+    types: [
       'water',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         50,
@@ -9889,7 +9895,7 @@ var pokemon = [
         30,
       ],
     ],
-    'moves': [
+    moves: [
       'vice-grip',
       'guillotine',
       'swords-dance',
@@ -9969,15 +9975,15 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bd3',
-    'name': 'gastly',
+    _id: '583dd0005e1c0d4be5367bd3',
+    name: 'gastly',
     order: 114,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/92.png',
-    '__v': 0,
-    'abilities': [
+    __v: 0,
+    abilities: [
       'levitate',
     ],
-    'types': [
+    types: [
       'poison',
       'ghost',
     ],
@@ -10007,7 +10013,7 @@ var pokemon = [
         30,
       ],
     ],
-    'moves': [
+    moves: [
       'fire-punch',
       'ice-punch',
       'thunder-punch',
@@ -10094,12 +10100,12 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bc6',
-    'name': 'bellsprout',
+    _id: '583dd0005e1c0d4be5367bc6',
+    name: 'bellsprout',
     order: 88,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/69.png',
-    '__v': 0,
-    'abilities': [
+    __v: 0,
+    abilities: [
       'gluttony',
       'chlorophyll',
     ],
@@ -10107,7 +10113,7 @@ var pokemon = [
       'poison',
       'grass',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         40,
@@ -10133,7 +10139,7 @@ var pokemon = [
         50,
       ],
     ],
-    'moves': [
+    moves: [
       'swords-dance',
       'cut',
       'bind',
@@ -10208,18 +10214,18 @@ var pokemon = [
   {
     _id: '583dd0005e1c0d4be5367bd7',
     name: 'voltorb',
-    'order': 125,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/100.png',
+    order: 125,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/100.png',
     __v: 0,
     abilities: [
       'aftermath',
       'static',
       'soundproof',
     ],
-    'types': [
+    types: [
       'electric',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         100,
@@ -10309,19 +10315,19 @@ var pokemon = [
   {
     _id: '583dd0005e1c0d4be5367bd6',
     name: 'onix',
-    'order': 118,
+    order: 118,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/95.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'weak-armor',
       'sturdy',
       'rock-head',
     ],
-    'types': [
+    types: [
       'ground',
       'rock',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         70,
@@ -10432,13 +10438,13 @@ var pokemon = [
     name: 'dodrio',
     order: 107,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/85.png',
-    '__v': 0,
-    'abilities': [
+    __v: 0,
+    abilities: [
       'tangled-feet',
       'early-bird',
       'run-away',
     ],
-    'types': [
+    types: [
       'flying',
       'normal',
     ],
@@ -10468,7 +10474,7 @@ var pokemon = [
         60,
       ],
     ],
-    'moves': [
+    moves: [
       'whirlwind',
       'fly',
       'fury-attack',
@@ -10532,17 +10538,17 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bda',
+    _id: '583dd0005e1c0d4be5367bda',
     name: 'farfetchd',
     order: 105,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/83.png',
-    '__v': 0,
+    __v: 0,
     abilities: [
       'defiant',
       'inner-focus',
       'keen-eye',
     ],
-    'types': [
+    types: [
       'flying',
       'normal',
     ],
@@ -10660,12 +10666,12 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bcc',
+    _id: '583dd0005e1c0d4be5367bcc',
     name: 'grimer',
-    'order': 110,
+    order: 110,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/88.png',
-    '__v': 0,
-    'abilities': [
+    __v: 0,
+    abilities: [
       'poison-touch',
       'sticky-hold',
       'stench',
@@ -10673,7 +10679,7 @@ var pokemon = [
     types: [
       'poison',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         25,
@@ -10699,7 +10705,7 @@ var pokemon = [
         80,
       ],
     ],
-    'moves': [
+    moves: [
       'pound',
       'fire-punch',
       'ice-punch',
@@ -10785,19 +10791,19 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bdd',
+    _id: '583dd0005e1c0d4be5367bdd',
     name: 'gengar',
     order: 116,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png',
-    '__v': 0,
+    __v: 0,
     abilities: [
       'levitate',
     ],
-    'types': [
+    types: [
       'poison',
       'ghost',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         110,
@@ -10927,21 +10933,21 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bcf',
+    _id: '583dd0005e1c0d4be5367bcf',
     name: 'geodude',
-    'order': 93,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/74.png',
-    '__v': 0,
-    'abilities': [
+    order: 93,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/74.png',
+    __v: 0,
+    abilities: [
       'sand-veil',
       'sturdy',
       'rock-head',
     ],
-    'types': [
+    types: [
       'ground',
       'rock',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         20,
@@ -10967,7 +10973,7 @@ var pokemon = [
         40,
       ],
     ],
-    'moves': [
+    moves: [
       'mega-punch',
       'fire-punch',
       'thunder-punch',
@@ -11051,20 +11057,20 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367be0',
-    'name': 'exeggcute',
-    'order': 127,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/102.png',
-    '__v': 0,
-    'abilities': [
+    _id: '583dd0005e1c0d4be5367be0',
+    name: 'exeggcute',
+    order: 127,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/102.png',
+    __v: 0,
+    abilities: [
       'harvest',
       'chlorophyll',
     ],
-    'types': [
+    types: [
       'psychic',
       'grass',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         40,
@@ -11090,7 +11096,7 @@ var pokemon = [
         60,
       ],
     ],
-    'moves': [
+    moves: [
       'swords-dance',
       'take-down',
       'double-edge',
@@ -11170,17 +11176,17 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367be3',
+    _id: '583dd0005e1c0d4be5367be3',
     name: 'cubone',
-    'order': 129,
+    order: 129,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/104.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'battle-armor',
       'lightning-rod',
       'rock-head',
     ],
-    'types': [
+    types: [
       'ground',
     ],
     stats: [
@@ -11305,20 +11311,20 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bd2',
-    'name': 'hypno',
+    _id: '583dd0005e1c0d4be5367bd2',
+    name: 'hypno',
     order: 122,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/97.png',
-    '__v': 0,
+    __v: 0,
     abilities: [
       'inner-focus',
       'forewarn',
       'insomnia',
     ],
-    'types': [
+    types: [
       'psychic',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         67,
@@ -11344,7 +11350,7 @@ var pokemon = [
         85,
       ],
     ],
-    'moves': [
+    moves: [
       'pound',
       'mega-punch',
       'fire-punch',
@@ -11443,9 +11449,9 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367be6',
-    'name': 'electrode',
-    'order': 126,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/101.png',
+    name: 'electrode',
+    order: 126,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/101.png',
     __v: 0,
     abilities: [
       'aftermath',
@@ -11481,7 +11487,7 @@ var pokemon = [
         60,
       ],
     ],
-    'moves': [
+    moves: [
       'headbutt',
       'tackle',
       'take-down',
@@ -11549,10 +11555,10 @@ var pokemon = [
   {
     _id: '583dd0005e1c0d4be5367bd5',
     name: 'shellder',
-    'order': 112,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/90.png',
+    order: 112,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/90.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'overcoat',
       'skill-link',
       'shell-armor',
@@ -11560,7 +11566,7 @@ var pokemon = [
     types: [
       'water',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         40,
@@ -11586,7 +11592,7 @@ var pokemon = [
         30,
       ],
     ],
-    'moves': [
+    moves: [
       'tackle',
       'take-down',
       'double-edge',
@@ -11654,21 +11660,21 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367be9',
+    _id: '583dd0005e1c0d4be5367be9',
     name: 'rhydon',
     order: 140,
     sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/112.png',
     __v: 0,
-    'abilities': [
+    abilities: [
       'reckless',
       'rock-head',
       'lightning-rod',
     ],
-    'types': [
+    types: [
       'rock',
       'ground',
     ],
-    'stats': [
+    stats: [
       [
         'speed',
         40,
@@ -11694,7 +11700,7 @@ var pokemon = [
         105,
       ],
     ],
-    'moves': [
+    moves: [
       'mega-punch',
       'pay-day',
       'fire-punch',
@@ -11808,12 +11814,12 @@ var pokemon = [
     ],
   },
   {
-    '_id': '583dd0005e1c0d4be5367bd8',
-    'name': 'drowzee',
-    'order': 121,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/96.png',
-    '__v': 0,
-    'abilities': [
+    _id: '583dd0005e1c0d4be5367bd8',
+    name: 'drowzee',
+    order: 121,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/96.png',
+    __v: 0,
+    abilities: [
       'inner-focus',
       'forewarn',
       'insomnia',
@@ -11847,7 +11853,7 @@ var pokemon = [
         60,
       ],
     ],
-    'moves': [
+    moves: [
       'pound',
       'mega-punch',
       'fire-punch',
@@ -11947,14 +11953,14 @@ var pokemon = [
   },
   {
     _id: '583dd0005e1c0d4be5367bec',
-    'name': 'weezing',
-    'order': 138,
-    'sprite': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/110.png',
-    '__v': 0,
-    'abilities': [
+    name: 'weezing',
+    order: 138,
+    sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/110.png',
+    __v: 0,
+    abilities: [
       'levitate',
     ],
-    'types': [
+    types: [
       'poison',
     ],
     stats: [

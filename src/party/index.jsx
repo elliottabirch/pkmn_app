@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Row, Col } from 'react-bootstrap';
 import WeaknessTable from './weaknessesTable';
 import PokemonTable from './pokemonTable';
 import Party from './currentParty';
@@ -10,6 +11,7 @@ class componentName extends Component {
     this.state = {
       party: [],
       pokemonNames: props.pokemon.map(pokemon => pokemon.name),
+      currentPokemon: { name: 'Bulbasaur' },
     };
   }
 
@@ -31,11 +33,30 @@ class componentName extends Component {
   }
   render() {
     return (
-      <div>
-        <WeaknessTable party={this.state.party} types={this.props.types} />
-        <Party party={this.state.party} />
-        <PokemonTable pokemonNames={this.state.pokemonNames} />
-      </div>
+      <Row>
+        <Col xs={12} md={12} lg={12}>
+          <Row>
+            <Col>
+              <WeaknessTable party={this.state.party} types={this.props.types} />
+            </Col>
+          </Row>
+          <h1>Current Party</h1>
+          <Row>
+            <Col xs={12} md={12} lg={12}>
+              <Party party={this.state.party} />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12} md={6} lg={6}>
+              <h3>{`${this.state.currentPokemon.name}'s Stats`}</h3>
+            </Col>
+            <Col xs={12} md={6} lg={6}>
+              <h3>Choose a Pokemon</h3>
+              <PokemonTable pokemonNames={this.state.pokemonNames} />
+            </Col>
+          </Row>
+        </Col>
+      </Row>
     );
   }
 }

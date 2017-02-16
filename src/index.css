@@ -1,0 +1,9 @@
+.party {
+  height: 50vh;
+}
+
+.pokemonTable {
+  overflow-y: scroll;
+  height: 50vh;
+
+}

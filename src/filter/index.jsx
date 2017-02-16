@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Row, Col } from 'react-bootstrap';
 import Filter from './filter';
 
 class Filters extends Component {
@@ -11,11 +12,18 @@ class Filters extends Component {
 
   render() {
     return (
-      <div>
-        <Filter keyName={'Name'} handleSubmit={this.props.addNameFilter} listEntries={this.props.pokemon.map(pokemon => pokemon.name)} />
-        <Filter keyName={'Type'} handleSubmit={this.props.addTypeFilter} listEntries={this.props.types} />
-        <Filter keyName={'Move'} handleSubmit={this.props.addMoveFilter} listEntries={this.props.moves} />
-      </div>
+      <Row>
+        <Col xs={4} lg={4} md={4}>
+          <Filter keyName={'Name'} handleSubmit={this.props.addNameFilter} listEntries={this.props.pokemon.map(pokemon => pokemon.name)} />
+        </Col>
+        <Col xs={4} lg={4} md={4}>
+          <Filter keyName={'Type'} handleSubmit={this.props.addTypeFilter} listEntries={this.props.types} />
+        </Col>
+        <Col xs={4} lg={4} md={4}>
+          <Filter keyName={'Move'} handleSubmit={this.props.addMoveFilter} listEntries={this.props.moves} />
+        </Col>
+      </Row>
+
     );
   }
 }
