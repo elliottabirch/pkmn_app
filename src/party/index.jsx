@@ -30,9 +30,7 @@ class componentName extends Component {
     });
   }
   render() {
-    console.log(this.state.pokemonNames);
     return (
-
       <div>
         <WeaknessTable party={this.state.party} types={this.props.types} />
         <Party party={this.state.party} />
