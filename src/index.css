@@ -4,6 +4,7 @@
 
 .pokemonTable {
   overflow-y: scroll;
-  height: 50vh;
+  height: 80vh;
+  margin-bottom: 25px;
 
 }

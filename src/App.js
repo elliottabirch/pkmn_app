@@ -11,11 +11,13 @@ class App extends Component {
     this.state = {
       moves: ['razor leaf', 'acid', 'spore'],
       types: ['grass', 'rock', 'ground'],
+      selectedPokemon: '',
     };
 
     this.addNameFilter = this.addNameFilter.bind(this);
     this.addMoveFilter = this.addMoveFilter.bind(this);
     this.addTypeFilter = this.addTypeFilter.bind(this);
+    this.selectPokemon = this.selectPokemon.bind(this);
   }
 
   addNameFilter(filter) {
@@ -30,6 +32,12 @@ class App extends Component {
     console.log(filter);
   }
 
+  selectPokemon(e) {
+    this.setState({
+      selectedPokemon: pokemon.filter((pokemon) => pokemon.name === e), 
+    });
+  }
+
   render() {
     return (
       <Grid>
@@ -38,8 +46,13 @@ class App extends Component {
             <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png" responsive />
           </Col>
         </Row>
-        <h1 className='text-centered'>Party Stats</h1>
-        <Party headings={['earth', 'wind']} pokemon={pokemon} types={this.state.types} />
+        <Party 
+          headings={['earth', 'wind']} 
+          pokemon={pokemon} 
+          types={this.state.types} 
+          selectedPokemon={this.state.selectedPokemon}
+          clickHandler={this.selectPokemon}
+        />
         <Filters
           addTypeFilter={this.addTypeFilter}
           addMoveFilter={this.addMoveFilter}

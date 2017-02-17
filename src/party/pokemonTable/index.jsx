@@ -35,8 +35,8 @@ class PokemonTable extends Component {
 
   render() {
     return (
-      <div className='pokemonTable'>
-        <Table rowsData={this.state.pokemonNames} />
+      <div className="pokemonTable">
+        <Table rowsData={this.state.pokemonNames} clickHandler={this.props.clickHandler} />
       </div>
     );
   }
