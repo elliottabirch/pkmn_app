@@ -14,6 +14,9 @@ class App extends Component {
       types: [],
       pokemon: [],
       typeData: [],
+      nameFilter: [],
+      typeFilter: [],
+      moveFilter: [],
     };
 
     this.addNameFilter = this.addNameFilter.bind(this);
@@ -43,20 +46,53 @@ class App extends Component {
       });
   }
 
-  componenentWillMount() {
-
+  filterPokemon(nameFilterArray, typeFilterArray, moveFilterArray) {
+    const temp = [...this.state.pokemon];
   }
 
+  removeFilter(filter, array) {
+    const temp = [...array];
+  }
+
+  addFilter(filter, array) {
+    const temp = [...array];
+    temp.push(filter);
+    return temp;
+  }
   addNameFilter(filter) {
-    console.log(filter);
+    this.setState({
+      nameFilter: this.addFilter(filter, this.state.nameFilter),
+    });
+  }
+
+  removeNameFilter(filter) {
+    this.setState({
+      nameFilter: this.removeFilter(filter, this.state.nameFilter),
+    });
   }
 
   addTypeFilter(filter) {
-    console.log(filter);
+    this.setState({
+      typeFilter: this.addFilter(filter, this.state.typeFilter),
+    });
+  }
+
+  removeTypeFilter(filter) {
+    this.setState({
+      typeFilter: this.removeFilter(filter, this.state.typeFilter),
+    });
   }
 
   addMoveFilter(filter) {
-    console.log(filter);
+    this.setState({
+      moveFilter: this.addFilter(filter, this.state.moveFilter),
+    });
+  }
+
+  removeMoveFilter(filter) {
+    this.setState({
+      moveFilter: this.removeFilter(filter, this.state.moveFilter),
+    });
   }
 
 
