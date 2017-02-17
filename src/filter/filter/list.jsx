@@ -1,10 +1,10 @@
 import React from 'react';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
-const List = ({ listEntries, handleClick, keyName, toggleActive }) => {
-  const entries = listEntries.map((entry, index) => <ListGroupItem key={`${entry + index}`} onClick={(e) => { handleClick(e.target.innerHTML, keyName); toggleActive(e); }}>{entry}</ListGroupItem>);
+const List = ({ listEntries, handleClick, keyName }) => {
+  const entries = listEntries.map((entry, index) => <ListGroupItem key={`${entry + index}`} onClick={(e) => { handleClick(e.target.innerHTML, keyName); }}>{entry}</ListGroupItem>);
   return (
-    <ListGroup>
+    <ListGroup style={{ 'overflow-y': 'auto', 'max-height': '100vh' }}>
       {entries}
     </ListGroup>
   );

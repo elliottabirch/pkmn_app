@@ -10,7 +10,6 @@ class SearchContainer extends Component {
       listEntries: props.listEntries,
     };
     this.handleChange = this.handleChange.bind(this);
-    this.toggleActive = this.toggleActive.bind(this);
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.listEntries !== nextProps.listEntries) {
@@ -27,9 +26,9 @@ class SearchContainer extends Component {
     });
   }
 
-  toggleActive(e) {
-    e.target.addClass('active');
-  }
+  // toggleActive(e) {
+  //   e.target.addClass('active');
+  // }
 
   render() {
     return (
@@ -41,7 +40,7 @@ class SearchContainer extends Component {
         </Row>
         <Row>
           <Col md={12} lg={12} sm={12}>
-            <List listEntries={this.state.listEntries} keyName={this.props.keyName} handleClick={this.props.handleSubmit} toggleActive={this.toggleActive} />
+            <List listEntries={this.state.listEntries} keyName={this.props.keyName} handleClick={this.props.handleSubmit} />
           </Col>
         </Row>
       </div>

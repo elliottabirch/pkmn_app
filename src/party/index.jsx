@@ -96,7 +96,7 @@ class componentName extends Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={6} lg={6}>
+          <Col xs={12} md={6} lg={6} style={{ 'min-height': '30vh' }}>
             <center><h3>{`${this.props.selectedPokemon ? this.props.selectedPokemon[0].name : 'No-one'}'s Stats`}</h3></center>
             <SelectedPokemon selectedPokemon={this.state.selectedPokemon} addToParty={this.addToParty} />
           </Col>

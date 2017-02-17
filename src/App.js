@@ -17,41 +17,73 @@ class App extends Component {
       nameFilter: [],
       typeFilter: [],
       moveFilter: [],
+      filteredPokemon: [],
     };
 
     this.addNameFilter = this.addNameFilter.bind(this);
     this.addMoveFilter = this.addMoveFilter.bind(this);
     this.addTypeFilter = this.addTypeFilter.bind(this);
-  }
-  componentDidMount() {
-    axios.get('http://localhost:3001/api/types')
-      .then((response) => {
-        console.log(response);
-        this.setState({
-          types: response.data.map(type => type.name),
-          moves: response.data.reduce((accum, type) => accum.concat(type.moves), []),
-          typeTableData: response.data.reduce((accum, { name, double_damage_to, double_damage_from, no_damage_to }) => {
-            accum[name] = { double_damage_from, double_damage_to, no_damage_to };
-            return accum;
-          }, {}),
-          typeData: response.data,
-        });
-      })
-      .catch(e => console.log(e));
-    axios.get('http://localhost:3001/api/pokemon')
-      .then((response) => {
-        this.setState({
-          pokemon: response.data.sort((a, b) => a.order - b.order),
-        });
-      });
+    this.filterPokemon = this.filterPokemon.bind(this);
   }
 
-  filterPokemon(nameFilterArray, typeFilterArray, moveFilterArray) {
-    const temp = [...this.state.pokemon];
+  componentDidMount() {
+    axios.all([axios.get('http://localhost:3001/api/types'), axios.get('http://localhost:3001/api/pokemon')])
+    .then((response) => {
+      const state = {
+        typeTableData: response[0].data.reduce((accum, { name, double_damage_to, double_damage_from, no_damage_to }) => {
+          accum[name] = { double_damage_from, double_damage_to, no_damage_to };
+          return accum;
+        }, {}),
+        pokemon: response[1].data,
+        filteredPokemon: response[1].data.sort((a, b) => a.order - b.order),
+        types: this.createArray(response[1].data, 'types'),
+        moves: this.createArray(response[1].data, 'moves'),
+      };
+      this.setState(state);
+    });
+  }
+
+  createArray(pokemonArray, data) {
+    const storage = pokemonArray.reduce((accum, pokemon) => {
+      const array = (data === 'moves' ? pokemon.moves : pokemon.types);
+      array.forEach((type) => {
+        accum[type] = 1;
+      });
+      return accum;
+    }, {});
+
+    return Object.keys(storage);
+  }
+
+  filterPokemon(nameFilterArray, moveFilterArray, typeFilterArray) {
+    let temp = [...this.state.pokemon];
+    temp = temp.filter((pokemon) => {
+      let passesFilter = true;
+      nameFilterArray.forEach((namefilter) => {
+        if (pokemon.name !== namefilter) {
+          passesFilter = false;
+        }
+      });
+      if (passesFilter) {
+        typeFilterArray.forEach((typefilter) => {
+          passesFilter = pokemon.types.includes(typefilter.toLowerCase());
+        });
+      }
+      if (passesFilter) {
+        moveFilterArray.forEach((movefilter) => {
+          passesFilter = pokemon.moves.includes(movefilter);
+        });
+      }
+      return passesFilter;
+    });
+
+    return temp;
   }
 
   removeFilter(filter, array) {
-    const temp = [...array];
+    let temp = [...array];
+    temp = temp.filter(val => val !== filter);
+    return temp;
   }
 
   addFilter(filter, array) {
@@ -60,39 +92,53 @@ class App extends Component {
     return temp;
   }
   addNameFilter(filter) {
-    this.setState({
-      nameFilter: this.addFilter(filter, this.state.nameFilter),
-    });
+    const nameFilter = this.addFilter(filter, this.state.nameFilter);
+    const filteredPokemon = this.filterPokemon(nameFilter, this.state.moveFilter, this.state.typeFilter);
+    const state = {
+      filteredPokemon,
+      nameFilter,
+    };
+    this.setState(state);
   }
 
   removeNameFilter(filter) {
     this.setState({
       nameFilter: this.removeFilter(filter, this.state.nameFilter),
-    });
+    }, () =>
+    this.filterPokemon(this.state.nameFilter, this.state.moveFilter, this.state.typeFilter),
+    );
   }
 
   addTypeFilter(filter) {
     this.setState({
       typeFilter: this.addFilter(filter, this.state.typeFilter),
-    });
+    }, () =>
+    this.filterPokemon(this.state.nameFilter, this.state.moveFilter, this.state.typeFilter),
+    );
   }
 
   removeTypeFilter(filter) {
     this.setState({
       typeFilter: this.removeFilter(filter, this.state.typeFilter),
-    });
+    }, () =>
+    this.filterPokemon(this.state.nameFilter, this.state.moveFilter, this.state.typeFilter),
+    );
   }
 
   addMoveFilter(filter) {
     this.setState({
       moveFilter: this.addFilter(filter, this.state.moveFilter),
-    });
+    }, () =>
+    this.filterPokemon(this.state.nameFilter, this.state.moveFilter, this.state.typeFilter),
+    );
   }
 
   removeMoveFilter(filter) {
     this.setState({
       moveFilter: this.removeFilter(filter, this.state.moveFilter),
-    });
+    }, () =>
+    this.filterPokemon(this.state.nameFilter, this.state.moveFilter, this.state.typeFilter),
+    );
   }
 
 
@@ -106,7 +152,7 @@ class App extends Component {
         </Row>
         <Party
           headings={['earth', 'wind']}
-          pokemon={this.state.pokemon}
+          pokemon={this.state.filteredPokemon}
           types={this.state.types}
           typeTableData={this.state.typeTableData}
         />
@@ -114,7 +160,7 @@ class App extends Component {
           addTypeFilter={this.addTypeFilter}
           addMoveFilter={this.addMoveFilter}
           addNameFilter={this.addNameFilter}
-          pokemon={this.state.pokemon}
+          pokemon={this.state.filteredPokemon}
           types={this.state.types}
           moves={this.state.moves}
         />
