@@ -29,6 +29,10 @@ class App extends Component {
         this.setState({
           types: response.data.map(type => type.name),
           moves: response.data.reduce((accum, type) => accum.concat(type.moves), []),
+          typeTableData: response.data.reduce((accum, { name, double_damage_to, double_damage_from, no_damage_to }) => {
+            accum[name] = { double_damage_from, double_damage_to, no_damage_to };
+            return accum;
+          }, {}),
           typeData: response.data,
         });
       })
@@ -77,6 +81,7 @@ class App extends Component {
           types={this.state.types}
           selectedPokemon={this.state.selectedPokemon}
           clickHandler={this.selectPokemon}
+          typeTableData={this.state.typeTableData}
         />
         <Filters
           addTypeFilter={this.addTypeFilter}

@@ -6,9 +6,7 @@ class WeaknessTable extends Component {
     super(props);
     this.state = {
       party: props.pokemon,
-      strengthTo: [1, 1, '0', 1],
-      weaknessTo: [1, 2, 3, 4],
-      immuneTo: [1, '0', 1, 1],
+
     };
   }
   render() {
@@ -16,7 +14,7 @@ class WeaknessTable extends Component {
       <Table
         collHeadings={this.props.types}
         rowHeadings={['Weakness', 'Strength', 'Immune']}
-        rowsData={[this.state.weaknessTo, this.state.strengthTo, this.state.immuneTo]}
+        rowsData={[this.props.weaknessTo, this.props.strengthTo, this.props.immuneTo]}
       />
     );
   }
