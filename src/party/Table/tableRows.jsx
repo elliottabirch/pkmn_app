@@ -1,12 +1,14 @@
 import React from 'react';
 import TableRow from './tableRow';
 
-const pokemonRows = ({ rowsData, rowHeadings, clickHandler }) => {
+const pokemonRows = ({ rowsData, rowHeadings, selectPokemon, addToParty, type, statType }) => {
   const rows = rowsData.map((data, index) =>
     <TableRow
       rowData={data} key={`${data + index}`}
       rowHeading={rowHeadings ? rowHeadings[index] : null}
-      clickHandler={clickHandler || null}
+      selectPokemon={selectPokemon || null}
+      addToParty={addToParty || null}
+      type={type}
     />);
   return (
     <tbody>

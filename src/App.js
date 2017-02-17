@@ -10,9 +10,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      moves: ['razor leaf', 'acid', 'spore'],
-      types: ['grass', 'rock', 'ground'],
-      selectedPokemon: '',
+      moves: [],
+      types: [],
       pokemon: [],
       typeData: [],
     };
@@ -20,7 +19,6 @@ class App extends Component {
     this.addNameFilter = this.addNameFilter.bind(this);
     this.addMoveFilter = this.addMoveFilter.bind(this);
     this.addTypeFilter = this.addTypeFilter.bind(this);
-    this.selectPokemon = this.selectPokemon.bind(this);
   }
   componentDidMount() {
     axios.get('http://localhost:3001/api/types')
@@ -61,11 +59,6 @@ class App extends Component {
     console.log(filter);
   }
 
-  selectPokemon(e) {
-    this.setState({
-      selectedPokemon: this.state.pokemon.filter(pokemon => pokemon.name === e),
-    });
-  }
 
   render() {
     return (
@@ -79,8 +72,6 @@ class App extends Component {
           headings={['earth', 'wind']}
           pokemon={this.state.pokemon}
           types={this.state.types}
-          selectedPokemon={this.state.selectedPokemon}
-          clickHandler={this.selectPokemon}
           typeTableData={this.state.typeTableData}
         />
         <Filters

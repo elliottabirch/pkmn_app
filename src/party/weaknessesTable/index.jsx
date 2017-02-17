@@ -15,6 +15,7 @@ class WeaknessTable extends Component {
         collHeadings={this.props.types}
         rowHeadings={['Weakness', 'Strength', 'Immune']}
         rowsData={[this.props.weaknessTo, this.props.strengthTo, this.props.immuneTo]}
+        type={'weakness'}
       />
     );
   }
