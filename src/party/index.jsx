@@ -12,31 +12,12 @@ class componentName extends Component {
     this.state = {
       party: [],
       pokemonNames: props.pokemon.map(pokemon => pokemon.name),
+      defaultStrengthTo: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      defaultWeaknessTo: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      defaultImmuneTo: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
       strengthTo: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
       weaknessTo: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
       immuneTo: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-      // weaknessTableOrder: {
-      //   normal: 0,
-      //   poison: 1,
-      //   steel: 2,
-      //   ice: 3,
-      //   grass: 4,
-      //   bug: 5,
-      //   fire: 6,
-      //   ground: 7,
-      //   psychic: 8,
-      //   rock: 9,
-      //   unknown: 10,
-      //   dark: 11,
-      //   shadow: 12,
-      //   water: 13,
-      //   dragon: 14,
-      //   ghost: 15,
-      //   electric: 16,
-      //   fairy: 17,
-      //   flying: 18,
-      //   fighting: 19,
-      // },
     };
 
     this.removeFromParty = this.removeFromParty.bind(this);
@@ -45,44 +26,52 @@ class componentName extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.pokemon !== this.props.pokemon) {
-      console.log(this.props.pokemon, nextProps.pokemon);
       this.setState({
         pokemonNames: nextProps.pokemon.map(pokemon => pokemon.name),
       });
     }
   }
 
+  setStatData(party) {
+    const tempStrength = [...this.state.defaultStrengthTo];
+    const tempWeakness = [...this.state.defaultWeaknessTo];
+    const tempImmune = [...this.state.defaultImmuneTo];
+    party.forEach((pokemon) => {
+      pokemon.types.forEach((type) => {
+        this.props.typeTableData[type].double_damage_to.forEach((strengthType) => { tempStrength[this.props.types.indexOf(strengthType)] = `${+tempStrength[this.props.types.indexOf(strengthType)] + 1}`; });
+        this.props.typeTableData[type].double_damage_from.forEach((strengthType) => { tempWeakness[this.props.types.indexOf(strengthType)] = `${+tempWeakness[this.props.types.indexOf(strengthType)] + 1}`; });
+        this.props.typeTableData[type].no_damage_to.forEach((strengthType) => { tempImmune[this.props.types.indexOf(strengthType)] = `${+tempImmune[this.props.types.indexOf(strengthType)] + 1}`; });
+      });
+    });
+    this.setState({
+      strengthTo: tempStrength,
+      weaknessTo: tempWeakness,
+      immuneTo: tempImmune,
+    });
+  }
+
   addToParty(pokemon) {
     const tempParty = [...this.state.party];
-    const tempStrength = [...this.state.strengthTo];
-    const tempWeakness = [...this.state.weaknessTo];
-    const tempImmune = [...this.state.immuneTo];
     if (tempParty.length < 6) {
       tempParty.push(pokemon[0]);
-      tempParty.forEach((pokemon) => {
-        pokemon.types.forEach((type) => {
-          this.props.typeTableData[type].double_damage_to.forEach((strengthType) => { tempStrength[this.props.types.indexOf(strengthType)] = `${+tempStrength[this.props.types.indexOf(strengthType)] + 1}`; });
-          this.props.typeTableData[type].double_damage_from.forEach((strengthType) => { tempWeakness[this.props.types.indexOf(strengthType)] = `${+tempStrength[this.props.types.indexOf(strengthType)] + 1}`; });
-          this.props.typeTableData[type].no_damage_to.forEach((strengthType) => { tempImmune[this.props.types.indexOf(strengthType)] = `${+tempStrength[this.props.types.indexOf(strengthType)] + 1}`; });
-        });
-      }, {});
+      this.setStatData(tempParty);
       this.setState({
         party: tempParty,
-        strengthTo: tempStrength,
-        weaknessTo: tempWeakness,
-        immuneTo: tempImmune,
       });
     }
   }
+
   removeFromParty(pokemon) {
     let tempParty = [...this.state.party];
     tempParty = tempParty.filter(pkmn => pkmn.name !== pokemon);
+    this.setStatData(tempParty);
+
+
     this.setState({
       party: tempParty,
     });
   }
 
-  removeFromParty
 
   render() {
     return (
