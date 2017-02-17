@@ -11,12 +11,12 @@ class componentName extends Component {
     super(props);
     this.state = {
       party: [],
-      defaultStrengthTo: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-      defaultWeaknessTo: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-      defaultImmuneTo: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-      strengthTo: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-      weaknessTo: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-      immuneTo: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      defaultStrengthTo: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      defaultWeaknessTo: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      defaultImmuneTo: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      strengthTo: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      weaknessTo: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      immuneTo: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
       selectedPokemon: '',
     };
 
@@ -34,9 +34,9 @@ class componentName extends Component {
     const tempImmune = [...this.state.defaultImmuneTo];
     party.forEach((pokemon) => {
       pokemon.types.forEach((type) => {
-        this.props.typeTableData[capitalizeFirstLetter(type)].double_damage_to.forEach((strengthType) => { tempStrength[this.props.types.indexOf(capitalizeFirstLetter(strengthType))] = `${+tempStrength[this.props.types.indexOf(strengthType)] + 1}`; });
-        this.props.typeTableData[capitalizeFirstLetter(type)].double_damage_from.forEach((strengthType) => { tempWeakness[this.props.types.indexOf(capitalizeFirstLetter(strengthType))] = `${+tempWeakness[this.props.types.indexOf(strengthType)] + 1}`; });
-        this.props.typeTableData[capitalizeFirstLetter(type)].no_damage_to.forEach((strengthType) => { tempImmune[this.props.types.indexOf(capitalizeFirstLetter(strengthType))] = `${+tempImmune[this.props.types.indexOf(strengthType)] + 1}`; });
+        this.props.typeTableData[capitalizeFirstLetter(type)].double_damage_to.forEach((strengthType) => { tempStrength[this.props.types.indexOf(capitalizeFirstLetter(strengthType))] = `${+tempStrength[this.props.types.indexOf(capitalizeFirstLetter(strengthType))] + 1}`; });
+        this.props.typeTableData[capitalizeFirstLetter(type)].double_damage_from.forEach((strengthType) => { tempWeakness[this.props.types.indexOf(capitalizeFirstLetter(strengthType))] = `${+tempWeakness[this.props.types.indexOf(capitalizeFirstLetter(strengthType))] + 1}`; });
+        this.props.typeTableData[capitalizeFirstLetter(type)].no_damage_to.forEach((strengthType) => { tempImmune[this.props.types.indexOf(capitalizeFirstLetter(strengthType))] = `${+tempImmune[this.props.types.indexOf(capitalizeFirstLetter(strengthType))] + 1}`; });
       });
     });
     this.setState({
@@ -69,7 +69,7 @@ class componentName extends Component {
   }
   selectPokemon(e) {
     this.setState({
-      selectedPokemon: this.props.pokemon.filter(pokemon => pokemon.name === e),
+      selectedPokemon: this.props.pokemon.filter(pokemon => pokemon.name === e.name),
     });
   }
 
@@ -102,7 +102,7 @@ class componentName extends Component {
           </Col>
           <Col xs={12} md={6} lg={6}>
             <center><h3>Choose a Pokemon</h3></center>
-            <PokemonTable pokemonNames={this.state.pokemonNames} selectPokemon={this.selectPokemon} addToParty={this.addToParty} />
+            <PokemonTable pokemon={this.props.pokemon} selectPokemon={this.selectPokemon} addToParty={this.addToParty} />
           </Col>
         </Row>
       </Row>

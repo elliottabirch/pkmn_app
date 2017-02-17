@@ -1,6 +1,8 @@
 .party {
-  height: 50vh;
+  height: 25vh;
 }
+
+/*pokemon table*/
 
 .pokemonTable {
   overflow-y: scroll;
@@ -12,4 +14,16 @@
 .pokemonTableButton {
   margin: 0px 0px 0px 10px;
   color: gray;
+}
+
+/*weakness Table*/
+
+.Weakness {
+  background-color: red;
+}
+.Strength {
+  background-color: green;
+}
+.Immune {
+  background-color: purple;
 }

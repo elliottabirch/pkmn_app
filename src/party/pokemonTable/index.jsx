@@ -3,40 +3,36 @@ import Table from '../Table';
 
 class PokemonTable extends Component {
   constructor(props) {
-    const temp = [];
-
-    props.pokemonNames.forEach((name, index) => {
-      if (index % 3 === 0) {
-        temp[Math.floor(index / 3)] = [name];
-      } else temp[Math.floor(index / 3)].push(name);
-    });
     super(props);
     this.state = {
-      pokemonNames: temp,
+      pokemon: this.generatePokemonRowArray(this.props.pokemon),
     };
   }
 
+
   componentWillReceiveProps(nextProps) {
-    if (this.props.pokemonNames !== nextProps.pokemonNames) {
-      const temp = [];
-
-      nextProps.pokemonNames.forEach((name, index) => {
-        if (index % 3 === 0) {
-          temp[Math.floor(index / 3)] = [name];
-        } else temp[Math.floor(index / 3)].push(name);
-      });
-
+    if (this.props.pokemon !== nextProps.pokemon) {
       this.setState({
-        pokemonNames: temp,
+        pokemon: this.generatePokemonRowArray(nextProps.pokemon),
       });
     }
   }
+  generatePokemonRowArray(array) {
+    const temp = [];
 
+    array.forEach((pokemon, index) => {
+      if (index % 3 === 0) {
+        temp[Math.floor(index / 3)] = [pokemon];
+      } else temp[Math.floor(index / 3)].push(pokemon);
+    });
+
+    return temp;
+  }
 
   render() {
     return (
       <div className="pokemonTable">
-        <Table rowsData={this.state.pokemonNames} selectPokemon={this.props.selectPokemon} addToParty={this.props.addToParty} type={'pokemon'} />
+        <Table rowsData={this.state.pokemon} selectPokemon={this.props.selectPokemon} addToParty={this.props.addToParty} type={'pokemon'} />
       </div>
     );
   }

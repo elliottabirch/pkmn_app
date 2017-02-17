@@ -19,7 +19,7 @@ const SelectedPokemon = ({ selectedPokemon, addToParty }) => {
       </Col>
     </Row>
     <p>
-      <Button onClick={() => addToParty(selectedPokemon)}bsStyle="primary">Add</Button>&nbsp;
+      <Button style={{ float: 'right' }} onClick={() => addToParty(selectedPokemon[0])}bsStyle="primary">Add</Button>&nbsp;
     </p>
   </Thumbnail> : <center><h3>Choose a Pokemon to see its stats</h3></center>);
 
