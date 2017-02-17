@@ -14,6 +14,7 @@ class App extends Component {
       types: ['grass', 'rock', 'ground'],
       selectedPokemon: '',
       pokemon: [],
+      typeData: [],
     };
 
     this.addNameFilter = this.addNameFilter.bind(this);
@@ -28,13 +29,14 @@ class App extends Component {
         this.setState({
           types: response.data.map(type => type.name),
           moves: response.data.reduce((accum, type) => accum.concat(type.moves), []),
-        }, () => (console.log(this.state)));
+          typeData: response.data,
+        });
       })
       .catch(e => console.log(e));
     axios.get('http://localhost:3001/api/pokemon')
       .then((response) => {
         this.setState({
-          pokemon: response.data,
+          pokemon: response.data.sort((a, b) => a.order - b.order),
         });
       });
   }
