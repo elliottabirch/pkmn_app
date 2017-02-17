@@ -12,6 +12,13 @@ class SearchContainer extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.toggleActive = this.toggleActive.bind(this);
   }
+  componentWillReceiveProps(nextProps) {
+    if (this.props.listEntries !== nextProps.listEntries) {
+      this.setState({
+        listEntries: nextProps.listEntries,
+      });
+    }
+  }
 
   handleChange(e, key) {
     this.setState({

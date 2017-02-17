@@ -29,10 +29,12 @@ class componentName extends Component {
 
   addToParty(pokemon) {
     let temp = [...this.state.party];
-    temp.push(pokemon);
-    this.setState({
-      party: temp,
-    });
+    if (temp.length < 6) {
+      temp.push(pokemon[0]);
+      this.setState({
+        party: temp,
+      });
+    } 
   }
   removeFromParty(pokemon) {
     let temp = [...this.state.party];
