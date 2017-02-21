@@ -6,7 +6,7 @@
 
 .pokemonTable {
   overflow-y: auto;
-  max-height: 80vh;
+  max-height: 55vh;
   min-height: 30vh;
   margin-bottom: 25px;
 
@@ -27,4 +27,22 @@
 }
 .Immune {
   background-color: purple;
+}
+
+/*filters*/
+
+.nameFilter {
+  background-color: #eeb3b3;
+  border-radius: 3px;
+  border: 2px solid white;
+}
+.typeFilter {
+    background-color: #d5ffd5;
+  border-radius: 3px;
+    border: 2px solid white;
+}
+.moveFilter {
+    background-color: #b3b3ff;
+  border-radius: 3px;
+    border: 2px solid white;
 }

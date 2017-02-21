@@ -35,12 +35,12 @@ class SearchContainer extends Component {
       <div>
         <Row>
           <Col md={12} lg={12} sm={12}>
-            <Filter handleChange={this.handleChange} keyName={this.props.keyName} handleSubmit={this.props.handleSubmit} />
+            <Filter handleChange={this.handleChange} keyName={this.props.keyName} addFilter={this.props.addFilter} />
           </Col>
         </Row>
         <Row>
           <Col md={12} lg={12} sm={12}>
-            <List listEntries={this.state.listEntries} keyName={this.props.keyName} handleClick={this.props.handleSubmit} />
+            <List listEntries={this.state.listEntries} keyName={this.props.keyName} addFilter={this.props.addFilter} />
           </Col>
         </Row>
       </div>
