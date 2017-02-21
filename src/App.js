@@ -18,11 +18,11 @@ class App extends Component {
       typeFilter: [],
       moveFilter: [],
       filteredPokemon: [],
+      filteredTypes: [],
     };
 
-    this.addNameFilter = this.addNameFilter.bind(this);
-    this.addMoveFilter = this.addMoveFilter.bind(this);
-    this.addTypeFilter = this.addTypeFilter.bind(this);
+    this.addFilter = this.addFilter.bind(this);
+    this.removeFilter = this.removeFilter.bind(this);
     this.filterPokemon = this.filterPokemon.bind(this);
   }
 
@@ -37,6 +37,7 @@ class App extends Component {
         pokemon: response[1].data,
         filteredPokemon: response[1].data.sort((a, b) => a.order - b.order),
         types: this.createArray(response[1].data, 'types'),
+        filteredTypes: this.createArray(response[1].data, 'types'),
         moves: this.createArray(response[1].data, 'moves'),
       };
       this.setState(state);
@@ -44,10 +45,14 @@ class App extends Component {
   }
 
   createArray(pokemonArray, data) {
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     const storage = pokemonArray.reduce((accum, pokemon) => {
-      const array = (data === 'moves' ? pokemon.moves : pokemon.types);
+      const array = pokemon[data];
       array.forEach((type) => {
-        accum[type] = 1;
+        accum[capitalizeFirstLetter(type)] = 1;
       });
       return accum;
     }, {});
@@ -55,23 +60,23 @@ class App extends Component {
     return Object.keys(storage);
   }
 
-  filterPokemon(nameFilterArray, moveFilterArray, typeFilterArray) {
+  filterPokemon({ nameFilter, moveFilter, typeFilter }) {
     let temp = [...this.state.pokemon];
     temp = temp.filter((pokemon) => {
       let passesFilter = true;
-      nameFilterArray.forEach((namefilter) => {
+      nameFilter.forEach((namefilter) => {
         if (pokemon.name !== namefilter) {
           passesFilter = false;
         }
       });
       if (passesFilter) {
-        typeFilterArray.forEach((typefilter) => {
-          passesFilter = pokemon.types.includes(typefilter.toLowerCase());
+        typeFilter.forEach((typefilter) => {
+          passesFilter = passesFilter && pokemon.types.includes(typefilter.toLowerCase());
         });
       }
       if (passesFilter) {
-        moveFilterArray.forEach((movefilter) => {
-          passesFilter = pokemon.moves.includes(movefilter);
+        moveFilter.forEach((movefilter) => {
+          passesFilter = passesFilter && pokemon.moves.includes(movefilter.toLowerCase());
         });
       }
       return passesFilter;
@@ -80,91 +85,62 @@ class App extends Component {
     return temp;
   }
 
-  removeFilter(filter, array) {
-    let temp = [...array];
-    temp = temp.filter(val => val !== filter);
-    return temp;
-  }
-
-  addFilter(filter, array) {
-    const temp = [...array];
-    temp.push(filter);
-    return temp;
-  }
-  addNameFilter(filter) {
-    const nameFilter = this.addFilter(filter, this.state.nameFilter);
-    const filteredPokemon = this.filterPokemon(nameFilter, this.state.moveFilter, this.state.typeFilter);
-    const state = {
-      filteredPokemon,
-      nameFilter,
+  removeFilter(filter, type) {
+    const filters = {
+      nameFilter: [...this.state.nameFilter],
+      typeFilter: [...this.state.typeFilter],
+      moveFilter: [...this.state.moveFilter],
     };
-    this.setState(state);
+
+    filters[type] = filters[type].filter(val => val !== filter);
+    filters.filteredPokemon = this.filterPokemon(filters);
+    filters.filteredTypes = this.createArray(filters.filteredPokemon, 'types');
+    filters.moves = this.createArray(filters.filteredPokemon, 'moves');
+    this.setState(filters);
   }
 
-  removeNameFilter(filter) {
-    this.setState({
-      nameFilter: this.removeFilter(filter, this.state.nameFilter),
-    }, () =>
-    this.filterPokemon(this.state.nameFilter, this.state.moveFilter, this.state.typeFilter),
-    );
-  }
+  addFilter(filter, type) {
+    const filters = {
+      nameFilter: [...this.state.nameFilter],
+      typeFilter: [...this.state.typeFilter],
+      moveFilter: [...this.state.moveFilter],
+    };
 
-  addTypeFilter(filter) {
-    this.setState({
-      typeFilter: this.addFilter(filter, this.state.typeFilter),
-    }, () =>
-    this.filterPokemon(this.state.nameFilter, this.state.moveFilter, this.state.typeFilter),
-    );
+    filters[type].push(filter);
+    filters.filteredPokemon = this.filterPokemon(filters);
+    filters.filteredTypes = this.createArray(filters.filteredPokemon, 'types');
+    filters.moves = this.createArray(filters.filteredPokemon, 'moves');
+    this.setState(filters);
   }
-
-  removeTypeFilter(filter) {
-    this.setState({
-      typeFilter: this.removeFilter(filter, this.state.typeFilter),
-    }, () =>
-    this.filterPokemon(this.state.nameFilter, this.state.moveFilter, this.state.typeFilter),
-    );
-  }
-
-  addMoveFilter(filter) {
-    this.setState({
-      moveFilter: this.addFilter(filter, this.state.moveFilter),
-    }, () =>
-    this.filterPokemon(this.state.nameFilter, this.state.moveFilter, this.state.typeFilter),
-    );
-  }
-
-  removeMoveFilter(filter) {
-    this.setState({
-      moveFilter: this.removeFilter(filter, this.state.moveFilter),
-    }, () =>
-    this.filterPokemon(this.state.nameFilter, this.state.moveFilter, this.state.typeFilter),
-    );
-  }
-
 
   render() {
     return (
-      <Grid>
-        <Row>
-          <Col xs={12} lg={12} >
-            <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png" responsive />
-          </Col>
-        </Row>
-        <Party
-          headings={['earth', 'wind']}
-          pokemon={this.state.filteredPokemon}
-          types={this.state.types}
-          typeTableData={this.state.typeTableData}
-        />
-        <Filters
-          addTypeFilter={this.addTypeFilter}
-          addMoveFilter={this.addMoveFilter}
-          addNameFilter={this.addNameFilter}
-          pokemon={this.state.filteredPokemon}
-          types={this.state.types}
-          moves={this.state.moves}
-        />
-      </Grid>
+      <div style={{ 'background-color': '#4e5ad2' }}>
+        <Grid style={{ 'background-color': '#f0f0c8' }}>
+          <Row>
+            <Col xs={12} lg={12} >
+              <Image style={{ marginBottom: '100px', marginTop: '20px' }} src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png" responsive />
+            </Col>
+          </Row>
+          <Party
+            pokemon={this.state.filteredPokemon}
+            types={this.state.types}
+            typeTableData={this.state.typeTableData}
+          />
+
+          <Filters
+            addFilter={this.addFilter}
+            pokemon={this.state.filteredPokemon}
+            types={this.state.filteredTypes}
+            moves={this.state.moves}
+            nameFilter={this.state.nameFilter}
+            typeFilter={this.state.typeFilter}
+            moveFilter={this.state.moveFilter}
+            removeFilter={this.removeFilter}
+          />
+        </Grid>
+
+      </div>
     );
   }
 }
