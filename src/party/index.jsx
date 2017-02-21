@@ -76,10 +76,10 @@ class componentName extends Component {
 
   render() {
     return (
-      <Row>
-        <center><h1 className="text-centered">Party Stats</h1></center>
-        <Row>
+      <div>
+        <Row style={{ backgroundColor: 'white', margin: '15px 3px', 'border-radius': '5px', 'box-shadow': '0px 0px 19px 1px rgba(0,0,0,0.75)' }}>
           <Col xs={12} md={12} lg={12}>
+            <center><h1 className="text-centered">Party Stats</h1></center>
             <WeaknessTable
               party={this.state.party}
               types={this.props.types}
@@ -88,16 +88,15 @@ class componentName extends Component {
               strengthTo={this.state.strengthTo}
             />
           </Col>
-        </Row>
-        <center><h1>Current Party</h1></center>
-        <Row>
           <Col xs={12} md={12} lg={12}>
+            <center><h1>Current Party</h1></center>
             <Party party={this.state.party} handleRemove={this.removeFromParty} />
           </Col>
         </Row>
-        <Row>
+        <Row style={{ backgroundColor: 'white', 'border-radius': '5px', margin: '15px 3px', 'box-shadow': '0px 0px 19px 1px rgba(0,0,0,0.75)' }}>
+
           <Col xs={12} md={6} lg={6} style={{ 'min-height': '30vh' }}>
-            <center><h3>{`${this.props.selectedPokemon ? this.props.selectedPokemon[0].name : 'No-one'}'s Stats`}</h3></center>
+            <div style={{ height: '55px' }} />
             <SelectedPokemon selectedPokemon={this.state.selectedPokemon} addToParty={this.addToParty} />
           </Col>
           <Col xs={12} md={6} lg={6}>
@@ -105,7 +104,7 @@ class componentName extends Component {
             <PokemonTable pokemon={this.props.pokemon} selectPokemon={this.selectPokemon} addToParty={this.addToParty} />
           </Col>
         </Row>
-      </Row>
+      </div>
     );
   }
 }
