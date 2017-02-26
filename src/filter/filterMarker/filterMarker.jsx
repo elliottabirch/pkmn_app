@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Col, Glyphicon, Row } from 'react-bootstrap';
 
 const FilterMarker = ({ filter, type, removeFilter }) => (
@@ -11,5 +11,11 @@ const FilterMarker = ({ filter, type, removeFilter }) => (
     </Row>
   </Col>
   );
+
+FilterMarker.propTypes = {
+  filter: PropTypes.string,
+  type: PropTypes.string,
+  removeFilter: PropTypes.func,
+};
 
 export default FilterMarker;

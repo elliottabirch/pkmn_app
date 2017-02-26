@@ -1,5 +1,5 @@
-import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import React, { PropTypes } from 'react';
+import { Row } from 'react-bootstrap';
 import FilterMarker from './filterMarker';
 
 const FilterMarkers = ({ filters, removeFilter }) => {
@@ -14,6 +14,11 @@ const FilterMarkers = ({ filters, removeFilter }) => {
       {nameFilterMarkers}
     </Row>
   );
+};
+
+FilterMarkers.propTypes = {
+  filters: PropTypes.object,
+  removeFilter: PropTypes.func,
 };
 
 export default FilterMarkers;

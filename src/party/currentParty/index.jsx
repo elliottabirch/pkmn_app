@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 import { Row } from 'react-bootstrap';
 import Pokemon from './pokemon';
 
@@ -10,5 +10,10 @@ function Party(props) {
     </Row>
   );
 }
+
+Party.propTypes = {
+  party: PropTypes.arrayOf(PropTypes.object),
+  handleRemove: PropTypes.func,
+};
 
 export default Party;

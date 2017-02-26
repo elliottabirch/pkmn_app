@@ -77,7 +77,7 @@ class componentName extends Component {
   render() {
     return (
       <div>
-        <Row style={{ backgroundColor: 'white', margin: '15px 3px', 'border-radius': '5px', 'box-shadow': '0px 0px 19px 1px rgba(0,0,0,0.75)' }}>
+        <Row style={{ backgroundColor: 'white', margin: '15px 3px', borderRadius: '5px', boxShadow: '0px 0px 19px 1px rgba(0,0,0,0.75)' }}>
           <Col xs={12} md={12} lg={12}>
             <center><h1 className="text-centered">Party Stats</h1></center>
             <WeaknessTable
@@ -93,9 +93,9 @@ class componentName extends Component {
             <Party party={this.state.party} handleRemove={this.removeFromParty} />
           </Col>
         </Row>
-        <Row style={{ backgroundColor: 'white', 'border-radius': '5px', margin: '15px 3px', 'box-shadow': '0px 0px 19px 1px rgba(0,0,0,0.75)' }}>
+        <Row style={{ backgroundColor: 'white', borderRadius: '5px', margin: '15px 3px', boxShadow: '0px 0px 19px 1px rgba(0,0,0,0.75)' }}>
 
-          <Col xs={12} md={6} lg={6} style={{ 'min-height': '30vh' }}>
+          <Col xs={12} md={6} lg={6} style={{ minHeight: '30vh' }}>
             <div style={{ height: '55px' }} />
             <SelectedPokemon selectedPokemon={this.state.selectedPokemon} addToParty={this.addToParty} />
           </Col>

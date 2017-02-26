@@ -30,9 +30,19 @@ class App extends Component {
     axios.all([axios.get('http://localhost:3001/api/types'), axios.get('http://localhost:3001/api/pokemon')])
     .then((response) => {
       const state = {
-        typeTableData: response[0].data.reduce((accum, { name, double_damage_to, double_damage_from, no_damage_to }) => {
-          accum[name] = { double_damage_from, double_damage_to, no_damage_to };
-          return accum;
+        typeTableData: response[0].data.reduce((accum, {
+
+          name,
+          double_damage_to,
+          double_damage_from,
+          no_damage_to }) => {
+          const acc = Object.assign(accum);
+          acc[name] = {
+            double_damage_from,
+            double_damage_to,
+            no_damage_to,
+          };
+          return acc;
         }, {}),
         pokemon: response[1].data,
         filteredPokemon: response[1].data.sort((a, b) => a.order - b.order),
@@ -50,11 +60,12 @@ class App extends Component {
     }
 
     const storage = pokemonArray.reduce((accum, pokemon) => {
+      const acc = Object.assign(accum);
       const array = pokemon[data];
       array.forEach((type) => {
-        accum[capitalizeFirstLetter(type)] = 1;
+        acc[capitalizeFirstLetter(type)] = 1;
       });
-      return accum;
+      return acc;
     }, {});
 
     return Object.keys(storage);
@@ -115,8 +126,8 @@ class App extends Component {
 
   render() {
     return (
-      <div style={{ 'background-color': '#4e5ad2' }}>
-        <Grid style={{ 'background-color': '#f0f0c8' }}>
+      <div style={{ backgroundColor: '#4e5ad2' }}>
+        <Grid style={{ backgroundColor: '#f0f0c8' }}>
           <Row>
             <Col xs={12} lg={12} >
               <Image style={{ marginBottom: '100px', marginTop: '20px' }} src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png" responsive />

@@ -5,7 +5,7 @@ const SelectedPokemon = ({ selectedPokemon, addToParty }) => {
   const entryStyle = {
     marginLeft: '8px',
   };
-  const card = (selectedPokemon ? <Thumbnail style={{ 'box-shadow': '2px 2px 9px 0px rgba(0,0,0,0.75)' }} src={selectedPokemon[0].sprite} alt="242x200">
+  const card = (selectedPokemon ? <Thumbnail style={{ boxShadow: '2px 2px 9px 0px rgba(0,0,0,0.75)' }} src={selectedPokemon[0].sprite} alt="242x200">
     <Row >
       <center><h2>{selectedPokemon[0].name}</h2></center>
       <Col sm={6} md={6} lg={6}>

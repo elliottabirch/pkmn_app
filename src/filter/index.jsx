@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Filter from './filter';
 import FilterMarkers from './filterMarker';
 
 function Filters(props) {
-  let filters = {
+  const filters = {
     type: props.typeFilter,
     move: props.moveFilter,
     name: props.nameFilter };
 
   return (
-    <Row style={{ padding: '5px', backgroundColor: 'white', margin: '15px 3px', 'border-radius': '5px', 'box-shadow': '0px 0px 19px 1px rgba(0,0,0,0.75)' }}>
+    <Row style={{ padding: '5px', backgroundColor: 'white', margin: '15px 3px', borderRadius: '5px', boxShadow: '0px 0px 19px 1px rgba(0,0,0,0.75)' }}>
       <Col xs={12} lg={12} md={12}>
         <FilterMarkers removeFilter={props.removeFilter} filters={filters} />
       </Col>
@@ -31,4 +31,14 @@ function Filters(props) {
   );
 }
 
+Filters.propTypes = {
+  typeFilter: PropTypes.arrayOf(PropTypes.string),
+  pokemon: PropTypes.arrayOf(PropTypes.object),
+  moveFilter: PropTypes.arrayOf(PropTypes.string),
+  nameFilter: PropTypes.arrayOf(PropTypes.string),
+  types: PropTypes.arrayOf(PropTypes.string),
+  moves: PropTypes.arrayOf(PropTypes.string),
+  removeFilter: PropTypes.func,
+  addFilter: PropTypes.func,
+};
 export default Filters;
