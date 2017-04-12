@@ -6,6 +6,8 @@ import { Image, Col, Row, Grid } from 'react-bootstrap';
 import Party from './party';
 import Filters from './filter';
 
+const URL = process.env.URL || 'http://localhost:3001';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -27,7 +29,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.all([axios.get('http://localhost:3001/api/types'), axios.get('http://localhost:3001/api/pokemon')])
+    axios.all([axios.get(`${URL}/api/types`), axios.get(`${URL}/api/pokemon`)])
     .then((response) => {
       const state = {
         typeTableData: response[0].data.reduce((accum, {
