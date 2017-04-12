@@ -1,3 +1,3 @@
 
-web: npm run build
+worker: npm run build
 web: npm run server
