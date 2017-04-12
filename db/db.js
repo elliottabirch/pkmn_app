@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/pkmnnames');
+const DBUrl = MONGODB_URI || 'mongodb://localhost/pkmnnames';
+
+mongoose.connect(DBUrl);
 const db = mongoose.connection;
 
 module.exports = db;
