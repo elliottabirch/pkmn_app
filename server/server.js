@@ -1,13 +1,18 @@
 const express = require('express');
+const path = require('path');
 
 const db = require('../db/db.js');
 const router = require('./routes');
 
 const app = express();
 
-require('./middleware')(app);
+const port = $PORT || 3001;
 
-app.use('/', router);
+
+require('./middleware')(app);
+app.use('/', express.static(path.join(__dirname.slice(0, -7), 'build')));
+
+app.use(router);
 
 
 db.on('error', (err) => {
@@ -15,7 +20,7 @@ db.on('error', (err) => {
 });
 db.once('open', () => {
   console.log('connected to DB');
-  app.listen(3001, (err) => {
+  app.listen(port, (err) => {
     if (err) { throw err; }
     console.log('connected to server on port 3001');
   });
