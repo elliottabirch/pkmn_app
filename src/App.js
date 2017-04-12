@@ -29,7 +29,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.all([axios.get(`${URL}/api/types`), axios.get(`${URL}/api/pokemon`)])
+    axios.all([axios.get('/api/types'), axios.get('/api/pokemon')])
     .then((response) => {
       const state = {
         typeTableData: response[0].data.reduce((accum, {
