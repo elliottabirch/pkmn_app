@@ -6,7 +6,7 @@ const router = require('./routes');
 
 const app = express();
 
-const port = $PORT || 3001;
+const port = process.env.$PORT || 3001;
 
 
 require('./middleware')(app);
@@ -22,7 +22,7 @@ db.once('open', () => {
   console.log('connected to DB');
   app.listen(port, (err) => {
     if (err) { throw err; }
-    console.log('connected to server on port 3001');
+    console.log(`connected to server on port ${port}`);
   });
 });
 
