@@ -6,7 +6,6 @@ import { Image, Col, Row, Grid } from 'react-bootstrap';
 import Party from './party';
 import Filters from './filter';
 
-const URL = process.env.URL || 'http://localhost:3001';
 
 class App extends Component {
   constructor(props) {
